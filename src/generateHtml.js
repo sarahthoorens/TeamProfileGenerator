@@ -1,6 +1,6 @@
 // function to choose what data to render based on the role chosen
 function renderHtmlCards (...teamMembers) {
-    let role = teamMembers.role[0];
+    let role = teamMembers.role;
     let htmlCards = ``
 
     if (role === 'Engineer') {
@@ -8,13 +8,13 @@ function renderHtmlCards (...teamMembers) {
        <div class="col">
            <div class="card bg-light shadow mx-auto" style="width: 18rem;">
                <div class="card-header bg-warning bg-gradient">
-                 <p class="fs-3 lh-md fw-semibold text-white">${engineer.name}</p>
-                 <p class="fs-4 fw-semibold text-white"><i class="fa-solid fa-laptop-code"></i>${engineer.role}</p>
+                 <p class="fs-3 lh-md fw-semibold text-white">${Engineer.name}</p>
+                 <p class="fs-4 fw-semibold text-white"><i class="fa-solid fa-laptop-code"></i>${Engineer.role}</p>
                </div>
                <ul class="list-group list-group-flush">
-                 <li class="list-group-item"><p>ID: ${engineer.id}</p></li>
-                 <li class="list-group-item"><p>Email: <a href="mailto:${engineer.email}">${engineer.email}</p></a></li>
-                 <li class="list-group-item"><p>GitHub: <a href='https://github.com/${engineer.github}'>${engineer.github}</p></li>
+                 <li class="list-group-item"><p>ID: ${Engineer.id}</p></li>
+                 <li class="list-group-item"><p>Email: <a href="mailto:${Engineer.email}">${Engineer.email}</p></a></li>
+                 <li class="list-group-item"><p>GitHub: <a href='https://github.com/${Engineer.github}'>${engineer.github}</p></li>
                </ul>
             </div>
       </div>`;
@@ -25,13 +25,13 @@ function renderHtmlCards (...teamMembers) {
         <div class="col">
         <div class="card bg-light shadow mx-auto" style="width: 18rem;">
             <div class="card-header bg-warning bg-gradient">
-              <p class="fs-3 lh-md fw-semibold text-white">${manager.name}</p>
+              <p class="fs-3 lh-md fw-semibold text-white">${Manager.name}</p>
               <p class="fs-4 fw-semibold text-white"><i class="fa-solid fa-laptop-code"></i>${manager.role}</p>
             </div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item"><p>ID: ${manager.id}</p></li>
-              <li class="list-group-item"><p>Email: <a href="mailto:${manager.email}">${manager.email}</p></a></li>
-              <li class="list-group-item"><p>Room #: ${manager.officeNumber}</p></li>
+              <li class="list-group-item"><p>ID: ${Manager.id}</p></li>
+              <li class="list-group-item"><p>Email: <a href="mailto:${Manager.email}">${manager.email}</p></a></li>
+              <li class="list-group-item"><p>Room #: ${Manager.officeNumber}</p></li>
             </ul>
          </div>
    </div>`;
@@ -58,7 +58,7 @@ function renderHtmlCards (...teamMembers) {
 }
 
  
-function generateHtml(...teamMembers) {
+function generateHtml(...htmlCards) {
     return `
 <!doctype html>
 <html lang="en">
@@ -75,7 +75,7 @@ function generateHtml(...teamMembers) {
     </div>
     <div class="container-fluid">
         <div class="row mt-5">
-${renderHtmlCards(...teamMembers)}
+${renderHtmlCards(...htmlCards)}
             <li class="list-group-item"></li>
             </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
